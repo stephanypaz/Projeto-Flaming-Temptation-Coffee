@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="body">
+    <header>
+        <h1>Coffee Shop</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/menu">Menu</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Bem-vindo ao melhor café da cidade!</h2>
+    </section>
+
+    <section class="menu">
+        <h2>Nosso Menu</h2>
+        <div class="product" id="espresso">
+            <h3>Espresso</h3>
+            <p>R$ 10,00</p>
+            <button onclick="addToCart('Espresso', 10)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product" id="latte">
+            <h3>Latte</h3>
+            <p>R$ 15,00</p>
+            <button onclick="addToCart('Latte', 15)">Adicionar ao Carrinho</button>
+        </div>
+        <!-- Mais produtos podem ser adicionados aqui -->
+    </section>
+
+    <section class="cart">
+        <h2>Carrinho de Compras</h2>
+        <ul id="cart-list"></ul>
+        <p id="cart-total">Total: R$ 0,00</p>
+        <button onclick="clearCart()">Limpar Carrinho</button>
+    </section>
+
+    <div class="footer">
+        <footer>
+            <p>&copy; 2025 Coffee Shop</p>
+        </footer>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function updateCart() {
+            const cartList = document.getElementById('cart-list');
+            const cartTotal = document.getElementById('cart-total');
+            cartList.innerHTML = '';
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remover';
+                removeButton.onclick = () => removeFromCart(index);
+                li.appendChild(removeButton);
+                cartList.appendChild(li);
+
+                total += item.price;
+            });
+
+            cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>

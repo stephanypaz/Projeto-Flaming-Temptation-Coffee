@@ -1,0 +1,114 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Faz o body ocupar 100% da altura da tela */
+    height: 100%;
+    position: relative;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #3e2723;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+/* Seção Hero */
+.hero {
+    background-color: #6d4c41;
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+
+/* Menu */
+.menu {
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.product {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+}
+
+button {
+    padding: 10px;
+    background-color: #6d4c41;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Estilos do Carrinho */
+.cart {
+    padding: 20px;
+    margin-top: 50px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 1; /* Isso faz o carrinho ocupar o espaço restante */
+    overflow-y: auto; /* Faz o carrinho ser rolável quando há muitos itens */
+    max-height: 400px; /* Limita a altura do carrinho */
+}
+
+/* Estilo para a lista de itens no carrinho */
+#cart-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+#cart-list li button {
+    background-color: #d32f2f;
+}
+
+#cart-total {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #3e2723;
+    color: white;
+    margin-top: auto; /* Isso faz o rodapé sempre ficar no final da tela */
+    
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
