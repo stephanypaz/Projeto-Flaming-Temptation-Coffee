@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body class="body">
+    <h1>Coffee Shop</h1>
+
+    <section class="menu">
+        <h2>Nosso Menu</h2>
+        <div th:each="produto, iterStat : ${produtos}" class="product">
+            <h3 th:text="${produto.nome}"></h3>
+            <p th:text="'R$ ' + ${produto.preco}"></p>
+            <form th:action="@{/adicionar}" method="post">
+                <input type="hidden" th:name="nome" th:value="${produto.nome}" />
+                <input type="hidden" th:name="preco" th:value="${produto.preco}" />
+                <button type="submit">Adicionar ao Carrinho</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="cart">
+        <h2>Carrinho de Compras</h2>
+        <ul>
+            <li th:each="item, stat : ${carrinho}">
+                <span th:text="${item.nome} + ' - R$ ' + ${item.preco}"></span>
+                <form th:action="@{/remover}" method="post" style="display:inline">
+                    <input type="hidden" name="index" th:value="${stat.index}" />
+                    <button type="submit">Remover</button>
+                </form>
+            </li>
+        </ul>
+        <form th:action="@{/limpar}" method="post">
+            <button type="submit">Limpar Carrinho</button>
+        </form>
+    </section>
+</body>
+</html>
